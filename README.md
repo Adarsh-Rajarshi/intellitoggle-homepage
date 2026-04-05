@@ -56,11 +56,37 @@ app/
 
 ## Tradeoffs & Notes
 
-- Dashboard mockup in hero is built in code (no image asset available from Figma export)
-- Logo SVG is hand-coded to match the Figma logo as closely as possible
-- Company trust logos are SVG placeholders since no image assets were exported
-- With more time I would: add smooth scroll animations, improve the dashboard mockup with real screenshots, add page transitions
+## Tradeoffs & Notes
 
+- Went with Nuxt 3 static generation over SSR since this is a 
+  marketing homepage — no need for server-side rendering, 
+  and static gives better performance on Netlify CDN.
+
+- Used @nuxtjs/tailwindcss module instead of the new 
+  @tailwindcss/vite approach — more stable with Nuxt 3's 
+  module system and avoids ESM conflicts during build.
+
+- Dashboard mockup in the hero is hand-coded in Vue — 
+  Figma assets weren't exportable so I rebuilt the layout 
+  in code to match as closely as possible. Given more time 
+  I'd swap this with a real screenshot using Nuxt Image 
+  with lazy loading.
+
+- Trust logos are SVG placeholders — no image assets were 
+  available in the Figma file. In production I'd replace 
+  these with optimized WebP assets.
+
+- Chose component-per-section architecture deliberately — 
+  makes it easy to drop individual sections into a Craft CMS 
+  or Ghost template later without refactoring.
+
+- Skipped page transitions for now to stay within the 
+  timebox — would add Vue's built-in Transition component 
+  for smooth section reveals on scroll.
+
+- With more time: add ARIA labels throughout, implement 
+  Nuxt Image for performance, add scroll-triggered animations 
+  using Vue's Intersection Observer.
 ## Pixelay Screenshots
 
 See /pixelay folder for desktop and mobile overlay screenshots.
